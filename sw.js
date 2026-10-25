@@ -2,7 +2,9 @@
 // 予定やメモなどのデータは扱わない（データは暗号化して IndexedDB にあり、ここは通らない）。
 // 新しい版を置くと、この内容（版の印）が変わる。新しい版は取り込んだあと待機し、
 // 画面の「更新する」（SKIP_WAITING）で切り替わる。アプリを全部閉じて開き直したときも切り替わる。
-const VERSION = 'oshigoto-techo-f01f13221831';
+// 同じ場所（github.io など）に置いたほかのアプリの保管は消さない。消すのはこのアプリの古い版だけ
+const PREFIX = 'oshigoto-techo-';
+const VERSION = `${PREFIX}fb8d53d6e71c`;
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
@@ -21,7 +23,7 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith(PREFIX) && k !== VERSION).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
