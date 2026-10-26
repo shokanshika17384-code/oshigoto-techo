@@ -4,7 +4,7 @@
 // 画面の「更新する」（SKIP_WAITING）で切り替わる。アプリを全部閉じて開き直したときも切り替わる。
 // 同じ場所（github.io など）に置いたほかのアプリの保管は消さない。消すのはこのアプリの古い版だけ
 const PREFIX = 'oshigoto-techo-';
-const VERSION = `${PREFIX}188fe3b55f50`;
+const VERSION = `${PREFIX}c6862b18d7c3`;
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {
